@@ -1,0 +1,68 @@
+-
+    url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/1'
+    html_url: 'https://github.com/vavroom/a11y-audit/milestone/1'
+    labels_url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/1/labels'
+    id: 4183660
+    node_id: MDk6TWlsZXN0b25lNDE4MzY2MA==
+    number: 1
+    title: 'To do'
+    description: 'These issues have just been logged in and need to be looked at.'
+    creator: { login: vavroom, id: 29165258, node_id: MDQ6VXNlcjI5MTY1MjU4, avatar_url: 'https://avatars1.githubusercontent.com/u/29165258?v=4', gravatar_id: '', url: 'https://api.github.com/users/vavroom', html_url: 'https://github.com/vavroom', followers_url: 'https://api.github.com/users/vavroom/followers', following_url: 'https://api.github.com/users/vavroom/following{/other_user}', gists_url: 'https://api.github.com/users/vavroom/gists{/gist_id}', starred_url: 'https://api.github.com/users/vavroom/starred{/owner}{/repo}', subscriptions_url: 'https://api.github.com/users/vavroom/subscriptions', organizations_url: 'https://api.github.com/users/vavroom/orgs', repos_url: 'https://api.github.com/users/vavroom/repos', events_url: 'https://api.github.com/users/vavroom/events{/privacy}', received_events_url: 'https://api.github.com/users/vavroom/received_events', type: User, site_admin: false }
+    open_issues: 3
+    closed_issues: 0
+    state: open
+    created_at: '2019-03-29T16:17:02Z'
+    updated_at: '2019-04-03T20:11:25Z'
+    due_on: null
+    closed_at: null
+-
+    url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/2'
+    html_url: 'https://github.com/vavroom/a11y-audit/milestone/2'
+    labels_url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/2/labels'
+    id: 4183662
+    node_id: MDk6TWlsZXN0b25lNDE4MzY2Mg==
+    number: 2
+    title: Fixed
+    description: 'These issues have been remediated '
+    creator: { login: vavroom, id: 29165258, node_id: MDQ6VXNlcjI5MTY1MjU4, avatar_url: 'https://avatars1.githubusercontent.com/u/29165258?v=4', gravatar_id: '', url: 'https://api.github.com/users/vavroom', html_url: 'https://github.com/vavroom', followers_url: 'https://api.github.com/users/vavroom/followers', following_url: 'https://api.github.com/users/vavroom/following{/other_user}', gists_url: 'https://api.github.com/users/vavroom/gists{/gist_id}', starred_url: 'https://api.github.com/users/vavroom/starred{/owner}{/repo}', subscriptions_url: 'https://api.github.com/users/vavroom/subscriptions', organizations_url: 'https://api.github.com/users/vavroom/orgs', repos_url: 'https://api.github.com/users/vavroom/repos', events_url: 'https://api.github.com/users/vavroom/events{/privacy}', received_events_url: 'https://api.github.com/users/vavroom/received_events', type: User, site_admin: false }
+    open_issues: 0
+    closed_issues: 0
+    state: open
+    created_at: '2019-03-29T16:17:40Z'
+    updated_at: '2019-03-29T16:17:40Z'
+    due_on: null
+    closed_at: null
+-
+    url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/3'
+    html_url: 'https://github.com/vavroom/a11y-audit/milestone/3'
+    labels_url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/3/labels'
+    id: 4183666
+    node_id: MDk6TWlsZXN0b25lNDE4MzY2Ng==
+    number: 3
+    title: 'Partly fixed'
+    description: 'Work has been done on these issues but the problem still exists in some way'
+    creator: { login: vavroom, id: 29165258, node_id: MDQ6VXNlcjI5MTY1MjU4, avatar_url: 'https://avatars1.githubusercontent.com/u/29165258?v=4', gravatar_id: '', url: 'https://api.github.com/users/vavroom', html_url: 'https://github.com/vavroom', followers_url: 'https://api.github.com/users/vavroom/followers', following_url: 'https://api.github.com/users/vavroom/following{/other_user}', gists_url: 'https://api.github.com/users/vavroom/gists{/gist_id}', starred_url: 'https://api.github.com/users/vavroom/starred{/owner}{/repo}', subscriptions_url: 'https://api.github.com/users/vavroom/subscriptions', organizations_url: 'https://api.github.com/users/vavroom/orgs', repos_url: 'https://api.github.com/users/vavroom/repos', events_url: 'https://api.github.com/users/vavroom/events{/privacy}', received_events_url: 'https://api.github.com/users/vavroom/received_events', type: User, site_admin: false }
+    open_issues: 1
+    closed_issues: 0
+    state: open
+    created_at: '2019-03-29T16:18:49Z'
+    updated_at: '2019-03-29T23:30:11Z'
+    due_on: null
+    closed_at: null
+-
+    url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/4'
+    html_url: 'https://github.com/vavroom/a11y-audit/milestone/4'
+    labels_url: 'https://api.github.com/repos/vavroom/a11y-audit/milestones/4/labels'
+    id: 4183667
+    node_id: MDk6TWlsZXN0b25lNDE4MzY2Nw==
+    number: 4
+    title: 'Won''t fix'
+    description: 'This issue will not be fixed.'
+    creator: { login: vavroom, id: 29165258, node_id: MDQ6VXNlcjI5MTY1MjU4, avatar_url: 'https://avatars1.githubusercontent.com/u/29165258?v=4', gravatar_id: '', url: 'https://api.github.com/users/vavroom', html_url: 'https://github.com/vavroom', followers_url: 'https://api.github.com/users/vavroom/followers', following_url: 'https://api.github.com/users/vavroom/following{/other_user}', gists_url: 'https://api.github.com/users/vavroom/gists{/gist_id}', starred_url: 'https://api.github.com/users/vavroom/starred{/owner}{/repo}', subscriptions_url: 'https://api.github.com/users/vavroom/subscriptions', organizations_url: 'https://api.github.com/users/vavroom/orgs', repos_url: 'https://api.github.com/users/vavroom/repos', events_url: 'https://api.github.com/users/vavroom/events{/privacy}', received_events_url: 'https://api.github.com/users/vavroom/received_events', type: User, site_admin: false }
+    open_issues: 0
+    closed_issues: 0
+    state: open
+    created_at: '2019-03-29T16:19:52Z'
+    updated_at: '2019-03-29T16:19:52Z'
+    due_on: null
+    closed_at: null
