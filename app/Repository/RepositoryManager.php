@@ -17,7 +17,7 @@ class RepositoryManager
     public const POST = 'post';
 
     // /repos/:owner/repos
-    public const GET_REPOS_ENDPOINT = '/users/%s/repos';
+    public const GET_REPOS_ENDPOINT = '/users/%s/repos?per_page=100';
 
     // /repos/:owner/
     public const GET_REPO_ENDPOINT = '/repos/%s/';

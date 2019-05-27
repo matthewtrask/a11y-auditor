@@ -61,9 +61,9 @@ If applicable, add screenshots to help explain your problem.
                             <label for="issue-milestone">Milestone</label>
                             {{--<input type="text" class="form-control" id="issue-milestone"  name="issue-milestone" placeholder="Issue Milestone">--}}
                             <select class="form-control custom-select" name="issue-milestone" id="issue-milestone">
-                                @foreach($milestones as $milestone)
-                                    <option value="{{ $milestone->getNumber() }}">{{ $milestone->getTitle() }}</option>
-                                @endforeach
+                                {{--@foreach($milestones as $milestone)--}}
+                                    {{--<option value="{{ $milestone->getNumber() }}">{{ $milestone->getTitle() }}</option>--}}
+                                {{--@endforeach--}}
                             </select>
                         </div>
                     </div>
@@ -85,6 +85,13 @@ If applicable, add screenshots to help explain your problem.
           var request = new XMLHttpRequest();
 
           request.open('POST', `/${repo}/issue/create`);
+
+          {{--request.onreadystatechange = function() {//Call a function when the state changes.--}}
+            {{--if(request.readyState === 4 && request.status === 200) {--}}
+              {{--window.location.href = "/{!! json_encode($repo->getName()) !!}/issues";--}}
+            {{--}--}}
+          {{--};--}}
+
           request.send(formData);
         }
     </script>

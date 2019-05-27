@@ -9,13 +9,32 @@
                 @endif
                 <div>
                     <h2>Repositories</h2>
+                    <p>Repository Count: {{ count($repos) }}</p>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success" onclick="showNewRepositoryForm()">New Repo</button>
                 </div>
+                <div id="newRepository" class="newRepository pt-4 pb-4">
+                    <fieldset>
+                        <h3>Create New Repository In Github</h3>
+                        <form id="newRepositoryForm">
+                            <div class="form-group">
+                                <label for="repository-name">Repository Name</label>
+                                <input type="text" name="repository-name" class="form-control" id="repository-name" aria-describedby="repositoryNameHelp" placeholder="Repository Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="repository-description">Repository Description</label>
+                                <input type="text" name="repository-description" class="form-control" id="repository-description" aria-describedby="repositorDescriptionHelp" placeholder="Repository Description">
+                            </div>
+                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                            <button type="button" class="btn btn-primary" onclick="createNewRepository(); return false;">Save</button>
+                        </form>
+                    </fieldset>
+                </div>
                 <div class="row">
-                    @foreach($repos as $repo)
-                        <div class="col-6 pb-4">
+                    @if(count($repos) > 0)
+                        @foreach($repos as $repo)
+                            <div class="col-6 pb-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row"></div>
@@ -29,24 +48,15 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                                </a>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="col-6 pb-4">
+                            <p>No repositories have been created yet.</p>
                         </div>
-                    @endforeach
-                </div>
-                <div id="newRepository" class="newRepository">
-                    <h2>Create New Repository In Github</h2>
-                    <form id="newRepositoryForm">
-                        <div class="form-group">
-                            <label for="repository-name">Repository Name</label>
-                            <input type="text" name="repository-name" class="form-control" id="repository-name" aria-describedby="repositoryNameHelp" placeholder="Repository Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="repository-description">Repository Description</label>
-                            <input type="text" name="repository-description" class="form-control" id="repository-description" aria-describedby="repositorDescriptionHelp" placeholder="Repository Description">
-                        </div>
-                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                        <button type="button" class="btn btn-primary" onclick="createNewRepository(); return false;">Save</button>
-                    </form>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -67,7 +77,14 @@
         function createNewRepository() {
             var formData = new FormData(document.querySelector('form'));
             var request = new XMLHttpRequest();
-            request.open('POST', '/repository/create');
+            request.open('POST', '/repository/create', true);
+
+            request.onreadystatechange = function() {//Call a function when the state changes.
+                if(request.readyState === 4 && request.status === 200) {
+                  location.reload();
+                }
+            };
+
             request.send(formData);
         }
     </script>

@@ -24,6 +24,9 @@ class Issue
     /** @var array */
     private $milestone;
 
+    /** @var int */
+    private $number;
+
     public function setId(int $id) : void
     {
         $this->id = $id;
@@ -77,5 +80,15 @@ class Issue
     public function setMilestone(? array $milestone)
     {
         $this->milestone = $milestone;
+    }
+
+    public function setNumber(int $number) : void
+    {
+        $this->number = $number;
+    }
+
+    public function getNumber() : int
+    {
+        return $this->number;
     }
 }

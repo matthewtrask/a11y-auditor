@@ -8,11 +8,15 @@ use App\Milestone\MilestoneManager;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Collection;
 use League\CommonMark\CommonMarkConverter;
+use Symfony\Component\Yaml\Yaml;
 
 class IssueManager
 {
     /* /repos/:owner/:repo/issues */
-    public const ISSUE_ENDPONT = '/repos/%s/%s/issues';
+    public const ISSUES_ENDPONT = '/repos/%s/%s/issues';
+
+    /* /repos/:owner/:repo/issues/:issue_number */
+    public const ISSUE_ENDPONT = '/repos/%s/%s/issues/%s';
 
     /** @var Client */
     private $client;
@@ -35,7 +39,7 @@ class IssueManager
             'body' => json_encode([
                 'title'     => $issue->getTitle(),
                 'body'      => $issue->getDescription(),
-                'milestone' => $issue->getMilestone(),
+                'milestone' => $issue->getMilestone()['number'],
                 'labels'    => $issue->getTags()
             ])
         ]);
@@ -63,6 +67,7 @@ class IssueManager
             $issue->setMilestone($data['milestone']);
             $issue->setDescription($this->convertMarkdown($data['body']));
             $issue->setTags($data['labels']);
+            $issue->setNumber($data['number']);
 
             $collection->add($issue);
         }
@@ -70,9 +75,39 @@ class IssueManager
         return $collection;
     }
 
+    public function getIssueByNumber(string $repo, int $id) : Issue
+    {
+        $res = $this->client->request('get', $this->buildIssueUrl($repo, $id), [
+            'headers' => [
+                'Authorization' => 'token ' . $this->getGithubToken(),
+            ]
+        ]);
+
+        $data = json_decode($res->getBody()->getContents(), true);
+
+        $issue = new Issue();
+        $issue->setTitle($data['title']);
+        $issue->setMilestone($data['milestone']);
+        $issue->setDescription($this->convertMarkdown($data['body']));
+        $issue->setTags($data['labels']);
+        $issue->setNumber($data['number']);
+
+        return $issue;
+    }
+
+    public function editIssue()
+    {
+
+    }
+
     private function buildIssuesUrl(string $repository) : string
     {
-        return $this->getGithubUri() . sprintf(self::ISSUE_ENDPONT, $this->getGithubUsername(), $repository);
+        return $this->getGithubUri() . sprintf(self::ISSUES_ENDPONT, $this->getGithubUsername(), $repository);
+    }
+
+    private function buildIssueUrl(string $repository, int $id) : string
+    {
+        return $this->getGithubUri() . sprintf(self::ISSUE_ENDPONT, $this->getGithubUsername(), $repository, $id);
     }
 
     private function getGithubUri() : string
@@ -100,5 +135,10 @@ class IssueManager
     private function createMarkdownConverter() : CommonMarkConverter
     {
         return new CommonMarkConverter(['html_input' => 'escape']);
+    }
+
+    private function findMilestone(int $milestoneId) : array
+    {
+
     }
 }

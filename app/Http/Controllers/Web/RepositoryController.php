@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\Web\RepositoryRequest;
 use App\Issue\IssueManager;
+use App\Label\Label;
+use App\Label\LabelManager;
 use App\Milestone\MilestoneManager;
 use App\Repository\RepositoryManager;
 use Illuminate\Http\Request;
@@ -21,11 +23,19 @@ class RepositoryController extends Controller
     /** @var MilestoneManager */
     private $milestoneManager;
 
-    public function __construct(RepositoryManager $repositoryManager, IssueManager $issueManager, MilestoneManager $milestoneManager)
-    {
+    /** @var LabelManager */
+    private $labelManager;
+
+    public function __construct(
+        RepositoryManager $repositoryManager,
+        IssueManager $issueManager,
+        MilestoneManager $milestoneManager,
+        LabelManager $labelManager
+    ) {
         $this->repositoryManager = $repositoryManager;
         $this->issueManager = $issueManager;
         $this->milestoneManager = $milestoneManager;
+        $this->labelManager = $labelManager;
     }
 
     public function index(Request $request)
@@ -36,6 +46,15 @@ class RepositoryController extends Controller
         ]);
     }
 
+    public function fetch(Request $request)
+    {
+        return view('audit.index', [
+            'repo' => $this->repositoryManager->getRepository($request->repository),
+            'labels' => $this->labelManager->getRepositoryIssueLabels(),
+            'milestones' => $this->milestoneManager->getMilestones()
+        ]);
+    }
+
     public function create(RepositoryRequest $request)
     {
         $created = $this->repositoryManager->createRepository(
@@ -43,14 +62,19 @@ class RepositoryController extends Controller
             $request->getRepositoryDescription()
         );
 
-        if ($created) {
-            return Redirect::to('/')->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
-        }
+        return \redirect()->back()->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
     }
 
     public function edit(RepositoryRequest $request)
     {
+        if ($request->getMethod() === 'POST') {
+            $this->issueManager->editIssue($request);
+        }
 
+        return view('repository.edit', [
+            'repo'       => $this->repositoryManager->getRepository($request->repository),
+            'issues'     => $this->issueManager->getIssuesForRepository($request->repository),
+        ]);
     }
 
     public function destroy(Request $request)

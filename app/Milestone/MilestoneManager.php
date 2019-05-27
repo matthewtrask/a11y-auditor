@@ -59,6 +59,19 @@ class MilestoneManager
         }
     }
 
+    public function findMilestoneForId(int $milestoneNumber) : array
+    {
+        $milestones = $this->yaml->parseFile(__DIR__ . '/../../data/milestones.yml');
+
+        foreach($milestones as $milestone) {
+            if ($milestoneNumber === $milestone['number']) {
+                return $milestone;
+            }
+        }
+
+        return [];
+    }
+
     private function buildUri(string $repo) : string
     {
         return $this->getGithubUri() . sprintf(
