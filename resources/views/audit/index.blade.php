@@ -6,7 +6,7 @@
             <div class="col-sm">
                 <h1>{{ $repo->getFullName() }}</h1>
                 <h3>Create Issue for Audit</h3>
-                <form id="create-issue" class="create-issue">
+                <form id="create-issue" class="create-issue" method="post" action="/{!! $repo->getName() !!}/issue/create">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="form-row">
                         <div class="col">
@@ -61,15 +61,15 @@ If applicable, add screenshots to help explain your problem.
                             <label for="issue-milestone">Milestone</label>
                             {{--<input type="text" class="form-control" id="issue-milestone"  name="issue-milestone" placeholder="Issue Milestone">--}}
                             <select class="form-control custom-select" name="issue-milestone" id="issue-milestone">
-                                {{--@foreach($milestones as $milestone)--}}
-                                    {{--<option value="{{ $milestone->getNumber() }}">{{ $milestone->getTitle() }}</option>--}}
-                                {{--@endforeach--}}
+                                @foreach($milestones as $milestone)
+                                    <option value="{{ $milestone->getNumber() }}">{{ $milestone->getTitle() }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="form-row pt-4">
-                        <button class="btn btn-primary" type="button" onclick="submitForm(); return false;">Save Issue</button>
+                        <button class="btn btn-primary" type="submit">Save Issue</button>
                     </div>
                 </form>
             </div>
@@ -77,6 +77,7 @@ If applicable, add screenshots to help explain your problem.
     </div>
 
     <script>
+
         $(".issue-labels").chosen();
 
         function submitForm() {
@@ -86,11 +87,11 @@ If applicable, add screenshots to help explain your problem.
 
           request.open('POST', `/${repo}/issue/create`);
 
-          {{--request.onreadystatechange = function() {//Call a function when the state changes.--}}
-            {{--if(request.readyState === 4 && request.status === 200) {--}}
-              {{--window.location.href = "/{!! json_encode($repo->getName()) !!}/issues";--}}
-            {{--}--}}
-          {{--};--}}
+          request.onreadystatechange = function() {//Call a function when the state changes.
+            if(request.readyState === 4 && request.status === 200) {
+              window.location.href = "/{!! json_encode($repo->getName()) !!}/issues";
+            }
+          };
 
           request.send(formData);
         }

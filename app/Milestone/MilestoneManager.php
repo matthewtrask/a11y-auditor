@@ -35,6 +35,7 @@ class MilestoneManager
             $milestone = new Milestone();
             $milestone->setNumber($data['number']);
             $milestone->setTitle($data['title']);
+            $milestone->setDescription($data['description']);
             $collection->add($milestone);
         }
 
@@ -70,6 +71,30 @@ class MilestoneManager
         }
 
         return [];
+    }
+
+    public function getMilestonesForRepository(string $repo) : Collection
+    {
+        $res = $this->client->request('get', $this->buildUri($repo), [
+            'headers' => [
+                'Authorization' => 'token ' . $this->getGithubToken()
+            ],
+        ]);
+
+
+
+        $collection = new Collection();
+
+        foreach (json_decode($res->getBody()->getContents(), true) as $data) {
+            $milestone = new Milestone();
+            $milestone->setTitle($data['title']);
+            $milestone->setNumber($data['number']);
+            $milestone->setDescription($data['description']);
+            $milestone->setOpenIssues($data['open_issues']);
+            $collection->add($milestone);
+        }
+
+        return $collection;
     }
 
     private function buildUri(string $repo) : string

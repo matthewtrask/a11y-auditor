@@ -15,6 +15,9 @@ class Milestone
     private $title;
 
     /** @var string */
+    private $description;
+
+    /** @var string */
     private $state;
 
     /** @var int */
@@ -44,7 +47,7 @@ class Milestone
         $this->title = $title;
     }
 
-    public function getState() : string
+    public function getState() : ? string
     {
         return $this->state;
     }
@@ -92,5 +95,15 @@ class Milestone
     public function setNumber(int $number) : void
     {
         $this->number = $number;
+    }
+
+    public function getDescription() : string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description) : void
+    {
+        $this->description = $description;
     }
 }

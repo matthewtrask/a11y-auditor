@@ -42,7 +42,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         @foreach(json_decode(json_encode($issue->getTags()), true) as $tag)
-                                            <span class="badge badge-primary" style="background-color: {{ $tag['color'] }}">
+                                            <span class="badge badge-primary" style="background-color: #{!! $tag['color'] !!}">
                                                 {{ $tag['name'] }}
                                             </span>
                                         @endforeach

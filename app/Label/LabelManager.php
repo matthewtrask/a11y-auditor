@@ -10,6 +10,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class LabelManager
 {
+    /** /repos/:owner/:repo/labels */
     public const LABELS_ENDPOINT = '/repos/%s/%s/labels';
 
     public const GET = 'get';
@@ -77,14 +78,9 @@ class LabelManager
         }
     }
 
-    public function createLabel()
-    {
-        //
-    }
-
     private function buildGetLabelsUri(string $repoName) : string
     {
-        return $this->getGithubUri() . sprintf(self::LABELS_ENDPOINT,$this->getGithubUserName(), $repoName);
+        return $this->getGithubUri() . sprintf(self::LABELS_ENDPOINT, $this->getGithubUserName(), $repoName);
     }
 
     private function getGithubUri() : string

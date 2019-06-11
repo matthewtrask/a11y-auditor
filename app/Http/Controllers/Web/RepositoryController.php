@@ -57,12 +57,12 @@ class RepositoryController extends Controller
 
     public function create(RepositoryRequest $request)
     {
-        $created = $this->repositoryManager->createRepository(
+        $this->repositoryManager->createRepository(
             $request->getRepositoryName(),
             $request->getRepositoryDescription()
         );
 
-        return \redirect()->back()->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
+        return \redirect('/' . $request->getRepositoryName())->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
     }
 
     public function edit(RepositoryRequest $request)

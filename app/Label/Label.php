@@ -10,7 +10,7 @@ class Label
     private $name;
 
     /** @var string */
-    private $color;
+    public $color;
 
     public function setName(string $name) : void
     {
