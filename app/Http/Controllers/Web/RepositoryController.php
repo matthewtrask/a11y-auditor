@@ -62,7 +62,9 @@ class RepositoryController extends Controller
             $request->getRepositoryDescription()
         );
 
-        return \redirect('/' . $request->getRepositoryName())->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
+        return redirect()
+            ->action('Web\RepositoryController@index', ['repository' => $request->getRepositoryName()])
+            ->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
     }
 
     public function edit(RepositoryRequest $request)

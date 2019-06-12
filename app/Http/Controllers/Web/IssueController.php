@@ -32,11 +32,11 @@ class IssueController extends Controller
     {
         $issue = $this->createIssue($request);
 
-        $created = $this->issueManager->createIssue($issue, $request->repository);
+        $this->issueManager->createIssue($issue, $request->repository);
 
-        if ($created) {
-            //return Redirect::to('/')->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
-        }
+        return redirect()
+            ->action('Web\RepositoryController@index', ['repository' => $request->repository])
+            ->with('message', 'The issue has been created!');
     }
 
     public function edit(IssueRequest $request)
