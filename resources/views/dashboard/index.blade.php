@@ -6,6 +6,9 @@
             <div class="col-sm">
                 @if(Session::has('message'))
                     <p class="alert alert-info">{{ Session::get('message') }}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 @endif
                 <div>
                     <h2>Repositories</h2>
