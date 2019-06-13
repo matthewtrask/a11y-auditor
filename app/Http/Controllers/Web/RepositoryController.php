@@ -63,7 +63,7 @@ class RepositoryController extends Controller
         );
 
         return redirect()
-            ->action('Web\RepositoryController@index', ['repository' => $request->getRepositoryName()])
+            ->action('Web\DashboardController@index')
             ->with('message', sprintf('%s repository created!', $request->getRepositoryName()));
     }
 
