@@ -45,7 +45,7 @@
                                         <div class="row"></div>
                                         <a href="/{{ $repo->getName() }}"><h3>{{ $repo->getName() }}</h3></a>
                                         <p><span class="badge badge-primary">Open Issues: {{$repo->getIssueCount()}}</span></p>
-                                        <p>{{ $repo->getCombinedDescription() }}</p>
+                                        <p>{{ $repo->getDescription() }}</p>
                                         <div class="row">
                                             <div class="col-sm">
                                                 <a href="/{{ $repo->getName() }}"><button class="btn btn-primary">View Details</button></a>
