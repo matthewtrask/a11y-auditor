@@ -29,7 +29,7 @@ class LabelController extends Controller
 
     public function create(LabelRequest $request)
     {
-        $this->labelManager->createLabel($request->getName(), $request->getColor());
+        $this->labelManager->createLabel($request->getName(), $request->getColor(), $request->getDescription());
 
         return redirect('/labels')->with('message',
             sprintf(

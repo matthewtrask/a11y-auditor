@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Issue\IssueManager;
 use App\Label\LabelManager;
+use App\Manager\BaseManager;
 use App\Milestone\MilestoneManager;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Collection;
 
-class RepositoryManager
+class RepositoryManager extends BaseManager
 {
     public const GET = 'get';
 
@@ -41,14 +41,14 @@ class RepositoryManager
         LabelManager $labelManager,
         MilestoneManager $milestoneManager
     ) {
-        $this->client = $client;
+        parent::__construct($client);
         $this->labelManager = $labelManager;
         $this->milestoneManager = $milestoneManager;
     }
 
     public function getRepositories() : Collection
     {
-        $data = $this->client->request(self::GET, $this->buildGetAllUri(), [
+        $data = $this->getClient()->request(self::GET, $this->buildGetAllUri(), [
             'headers' => [
                 'Authorization' => 'token ' . $this->getGithubToken()
             ]
@@ -74,7 +74,7 @@ class RepositoryManager
 
     public function getRepository(string $repoName) : Repository
     {
-        $data = $this->client->request(self::GET, $this->buildGetOneUri($repoName), [
+        $data = $this->getClient()->request(self::GET, $this->buildGetOneUri($repoName), [
             'headers' => [
                 'Authorization' => 'token ' . $this->getGithubToken()
             ]
@@ -103,7 +103,7 @@ class RepositoryManager
                 'has_projects' => true
         ]);
 
-        $data = $this->client->request(self::POST, $this->buildPostUri(), [
+        $data = $this->getClient()->request(self::POST, $this->buildPostUri(), [
             'headers' => [
                 'Authorization' => 'token ' . $this->getGithubToken()
             ],
@@ -121,7 +121,7 @@ class RepositoryManager
 
     public function deleteRepository(string $repository)
     {
-        $res = $this->client->request('DELETE', $this->buildDeleteUri($repository), [
+        $res = $this->getClient()->request('DELETE', $this->buildDeleteUri($repository), [
             'hedaers' => [
                 'Authorization' => 'token ' . $this->getGithubToken(),
             ]
@@ -132,12 +132,12 @@ class RepositoryManager
 
     private function buildGetAllUri() : string
     {
-        return $this->getGithubUri() . sprintf(self::GET_REPOS_ENDPOINT, $this->getGithubUser());
+        return $this->getGithubUri() . sprintf(self::GET_REPOS_ENDPOINT, $this->getGithubUserName());
     }
 
     private function buildGetOneUri(string $repoName) : string
     {
-        return $this->getGithubUri() . sprintf(self::GET_REPO_ENDPOINT, $this->getGithubUser()) . $repoName;
+        return $this->getGithubUri() . sprintf(self::GET_REPO_ENDPOINT, $this->getGithubUserName()) . $repoName;
     }
 
     private function buildPostUri() : string
@@ -147,21 +147,6 @@ class RepositoryManager
 
     private function buildDeleteUri(string $repo) : string
     {
-        return $this->getGithubUri() . sprintf(self::DELETE_ENDPONT, $this->getGithubUser(), $repo);
-    }
-
-    private function getGithubUri() : string
-    {
-        return (string) config('github.github_uri');
-    }
-
-    private function getGithubToken() : string
-    {
-        return (string) config('github.github_personal_access_token');
-    }
-
-    private function getGithubUser() : string
-    {
-        return (string) config('github.github_username');
+        return $this->getGithubUri() . sprintf(self::DELETE_ENDPONT, $this->getGithubUserName(), $repo);
     }
 }

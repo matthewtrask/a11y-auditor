@@ -5,6 +5,7 @@
     name: 1.1.1
     color: d0ffad
     default: false
+    description: 'Non-text content'
 -
     id: 1294431346
     node_id: MDU6TGFiZWwxMjk0NDMxMzQ2
@@ -12,6 +13,7 @@
     name: 1.2.1
     color: d0ffad
     default: false
+    description: 'Prerecorded Audio-only and Video-only'
 -
     id: 1294431749
     node_id: MDU6TGFiZWwxMjk0NDMxNzQ5
@@ -19,6 +21,7 @@
     name: 1.2.2
     color: d0ffad
     default: false
+    description: 'Captions (Prerecorded)'
 -
     id: 1294432854
     node_id: MDU6TGFiZWwxMjk0NDMyODU0
@@ -26,6 +29,7 @@
     name: 1.2.3
     color: d0ffad
     default: false
+    description: 'Audio Description or Media Laternative (Prerercorded'
 -
     id: 1294433136
     node_id: MDU6TGFiZWwxMjk0NDMzMTM2
@@ -33,6 +37,7 @@
     name: 1.2.4
     color: 077b9e
     default: false
+    description: 'Captions (Live)'
 -
     id: 1294433441
     node_id: MDU6TGFiZWwxMjk0NDMzNDQx
@@ -40,6 +45,7 @@
     name: 1.2.5
     color: 077b9e
     default: false
+    description: 'Audio description (Prerecorded)'
 -
     id: 1294433726
     node_id: MDU6TGFiZWwxMjk0NDMzNzI2
@@ -47,6 +53,7 @@
     name: 1.2.6
     color: ea98e1
     default: false
+    description: 'Sign Language (Prerecorded)'
 -
     id: 1294433961
     node_id: MDU6TGFiZWwxMjk0NDMzOTYx
@@ -54,6 +61,7 @@
     name: 1.2.7
     color: ea98e1
     default: false
+    description: 'Extended Audio Description (Prerecorded'
 -
     id: 1294434208
     node_id: MDU6TGFiZWwxMjk0NDM0MjA4
@@ -61,6 +69,7 @@
     name: 1.2.8
     color: ea98e1
     default: false
+    description: 'Media Alternative (Prerecorded'
 -
     id: 1294434459
     node_id: MDU6TGFiZWwxMjk0NDM0NDU5
@@ -68,6 +77,7 @@
     name: 1.2.9
     color: ea98e1
     default: false
+    description: 'Audio-only (Live)'
 -
     id: 1294439674
     node_id: MDU6TGFiZWwxMjk0NDM5Njc0
@@ -75,6 +85,7 @@
     name: 1.3.1
     color: d0ffad
     default: false
+    description: 'Info and Relationships'
 -
     id: 1294439956
     node_id: MDU6TGFiZWwxMjk0NDM5OTU2
@@ -82,6 +93,7 @@
     name: 1.3.2
     color: d0ffad
     default: false
+    description: 'Meaningful Sequence'
 -
     id: 1294440117
     node_id: MDU6TGFiZWwxMjk0NDQwMTE3
@@ -89,6 +101,7 @@
     name: 1.3.3
     color: d0ffad
     default: false
+    description: 'Sensory Characteristics'
 -
     id: 1294440366
     node_id: MDU6TGFiZWwxMjk0NDQwMzY2
@@ -96,6 +109,7 @@
     name: 1.3.4
     color: 077b9e
     default: false
+    description: Orientation
 -
     id: 1294440527
     node_id: MDU6TGFiZWwxMjk0NDQwNTI3
@@ -103,6 +117,7 @@
     name: 1.3.5
     color: 077b9e
     default: false
+    description: 'Identify Input Purpose'
 -
     id: 1294440760
     node_id: MDU6TGFiZWwxMjk0NDQwNzYw
@@ -110,6 +125,7 @@
     name: 1.3.6
     color: ea98e1
     default: false
+    description: 'Identify Purpose'
 -
     id: 1294441066
     node_id: MDU6TGFiZWwxMjk0NDQxMDY2
@@ -117,6 +133,7 @@
     name: 1.4.1
     color: d0ffad
     default: false
+    description: 'Use of Color'
 -
     id: 1295936780
     node_id: MDU6TGFiZWwxMjk1OTM2Nzgw
@@ -124,6 +141,7 @@
     name: 1.4.10
     color: 077b9e
     default: false
+    description: Reflow
 -
     id: 1295937008
     node_id: MDU6TGFiZWwxMjk1OTM3MDA4
@@ -131,6 +149,7 @@
     name: 1.4.11
     color: 077b9e
     default: false
+    description: 'Non-Text Contrast'
 -
     id: 1295937201
     node_id: MDU6TGFiZWwxMjk1OTM3MjAx
@@ -138,6 +157,7 @@
     name: 1.4.12
     color: 077b9e
     default: false
+    description: 'Text Spacing'
 -
     id: 1295937612
     node_id: MDU6TGFiZWwxMjk1OTM3NjEy
@@ -145,6 +165,7 @@
     name: 1.4.13
     color: 077b9e
     default: false
+    description: 'Content on Hover or Focus'
 -
     id: 1294441223
     node_id: MDU6TGFiZWwxMjk0NDQxMjIz
@@ -152,6 +173,7 @@
     name: 1.4.2
     color: d0ffad
     default: false
+    description: 'Audio Control'
 -
     id: 1294441438
     node_id: MDU6TGFiZWwxMjk0NDQxNDM4
@@ -159,6 +181,7 @@
     name: 1.4.3
     color: 077b9e
     default: false
+    description: 'Contrast (minimum)'
 -
     id: 1294441634
     node_id: MDU6TGFiZWwxMjk0NDQxNjM0
@@ -166,6 +189,7 @@
     name: 1.4.4
     color: 077b9e
     default: false
+    description: 'Resize Text'
 -
     id: 1294441846
     node_id: MDU6TGFiZWwxMjk0NDQxODQ2
@@ -173,6 +197,7 @@
     name: 1.4.5
     color: 077b9e
     default: false
+    description: 'Images of Text'
 -
     id: 1294442135
     node_id: MDU6TGFiZWwxMjk0NDQyMTM1
@@ -180,6 +205,7 @@
     name: 1.4.6
     color: ea98e1
     default: false
+    description: 'Contrast (Enhanced)'
 -
     id: 1294442537
     node_id: MDU6TGFiZWwxMjk0NDQyNTM3
@@ -187,6 +213,7 @@
     name: 1.4.7
     color: ea98e1
     default: false
+    description: 'Low or No Background Audio'
 -
     id: 1294442755
     node_id: MDU6TGFiZWwxMjk0NDQyNzU1
@@ -194,6 +221,7 @@
     name: 1.4.8
     color: ea98e1
     default: false
+    description: 'Visual Presentation'
 -
     id: 1295936490
     node_id: MDU6TGFiZWwxMjk1OTM2NDkw
@@ -201,6 +229,7 @@
     name: 1.4.9
     color: ea98e1
     default: false
+    description: 'Images of Text (No exception)'
 -
     id: 1295937846
     node_id: MDU6TGFiZWwxMjk1OTM3ODQ2
@@ -208,6 +237,7 @@
     name: 2.1.1
     color: d0ffad
     default: false
+    description: Keyboard
 -
     id: 1295938167
     node_id: MDU6TGFiZWwxMjk1OTM4MTY3
@@ -215,6 +245,7 @@
     name: 2.1.2
     color: d0ffad
     default: false
+    description: 'No Keyboard Trap'
 -
     id: 1295938441
     node_id: MDU6TGFiZWwxMjk1OTM4NDQx
@@ -222,6 +253,7 @@
     name: 2.1.3
     color: ea98e1
     default: false
+    description: 'Keyboard (No Exception)'
 -
     id: 1295938722
     node_id: MDU6TGFiZWwxMjk1OTM4NzIy
@@ -229,6 +261,7 @@
     name: 2.1.4
     color: d0ffad
     default: false
+    description: 'Character Key Shortcuts'
 -
     id: 1295938897
     node_id: MDU6TGFiZWwxMjk1OTM4ODk3
@@ -236,6 +269,7 @@
     name: 2.2.1
     color: d0ffad
     default: false
+    description: 'Timing Adjustable'
 -
     id: 1295939060
     node_id: MDU6TGFiZWwxMjk1OTM5MDYw
@@ -243,6 +277,7 @@
     name: 2.2.2
     color: d0ffad
     default: false
+    description: 'Pause, Stop, Hide'
 -
     id: 1295939301
     node_id: MDU6TGFiZWwxMjk1OTM5MzAx
@@ -250,6 +285,7 @@
     name: 2.2.3
     color: ea98e1
     default: false
+    description: 'No Timing'
 -
     id: 1295939494
     node_id: MDU6TGFiZWwxMjk1OTM5NDk0
@@ -257,6 +293,7 @@
     name: 2.2.4
     color: ea98e1
     default: false
+    description: Interruptions
 -
     id: 1295939688
     node_id: MDU6TGFiZWwxMjk1OTM5Njg4
@@ -264,6 +301,7 @@
     name: 2.2.5
     color: ea98e1
     default: false
+    description: Re-Authenticating
 -
     id: 1295939897
     node_id: MDU6TGFiZWwxMjk1OTM5ODk3
@@ -271,6 +309,7 @@
     name: 2.2.6
     color: ea98e1
     default: false
+    description: Timeouts
 -
     id: 1295940115
     node_id: MDU6TGFiZWwxMjk1OTQwMTE1
@@ -278,6 +317,7 @@
     name: 2.3.1
     color: d0ffad
     default: false
+    description: 'Three Flashes or Below Thershold'
 -
     id: 1295940310
     node_id: MDU6TGFiZWwxMjk1OTQwMzEw
@@ -285,6 +325,7 @@
     name: 2.3.2
     color: ea98e1
     default: false
+    description: 'Three Flashes'
 -
     id: 1295940495
     node_id: MDU6TGFiZWwxMjk1OTQwNDk1
@@ -292,6 +333,7 @@
     name: 2.3.3
     color: ea98e1
     default: false
+    description: 'Animation from Interactions'
 -
     id: 1295940680
     node_id: MDU6TGFiZWwxMjk1OTQwNjgw
@@ -299,6 +341,7 @@
     name: 2.4.1
     color: d0ffad
     default: false
+    description: 'Bypass Blocks'
 -
     id: 1295942459
     node_id: MDU6TGFiZWwxMjk1OTQyNDU5
@@ -306,6 +349,7 @@
     name: 2.4.10
     color: ea98e1
     default: false
+    description: 'Section Headings'
 -
     id: 1295940894
     node_id: MDU6TGFiZWwxMjk1OTQwODk0
@@ -313,6 +357,7 @@
     name: 2.4.2
     color: d0ffad
     default: false
+    description: 'Page Titled'
 -
     id: 1295941181
     node_id: MDU6TGFiZWwxMjk1OTQxMTgx
@@ -320,6 +365,7 @@
     name: 2.4.3
     color: d0ffad
     default: false
+    description: 'Focus Order'
 -
     id: 1295941294
     node_id: MDU6TGFiZWwxMjk1OTQxMjk0
@@ -327,6 +373,7 @@
     name: 2.4.4
     color: d0ffad
     default: false
+    description: 'Link Purpose (In Context)'
 -
     id: 1295941472
     node_id: MDU6TGFiZWwxMjk1OTQxNDcy
@@ -334,6 +381,7 @@
     name: 2.4.5
     color: d0ffad
     default: false
+    description: 'Multiple Ways'
 -
     id: 1295941819
     node_id: MDU6TGFiZWwxMjk1OTQxODE5
@@ -341,6 +389,7 @@
     name: 2.4.6
     color: 077b9e
     default: false
+    description: 'Headings and Labels'
 -
     id: 1295942014
     node_id: MDU6TGFiZWwxMjk1OTQyMDE0
@@ -348,6 +397,7 @@
     name: 2.4.7
     color: 077b9e
     default: false
+    description: 'Focus Visible'
 -
     id: 1295942176
     node_id: MDU6TGFiZWwxMjk1OTQyMTc2
@@ -355,6 +405,7 @@
     name: 2.4.8
     color: ea98e1
     default: false
+    description: Location
 -
     id: 1295942346
     node_id: MDU6TGFiZWwxMjk1OTQyMzQ2
@@ -362,6 +413,7 @@
     name: 2.4.9
     color: ea98e1
     default: false
+    description: 'Link Purpose (Link only)'
 -
     id: 1295942581
     node_id: MDU6TGFiZWwxMjk1OTQyNTgx
@@ -369,6 +421,7 @@
     name: 2.5.1
     color: d0ffad
     default: false
+    description: 'Pointer Gestures'
 -
     id: 1295942723
     node_id: MDU6TGFiZWwxMjk1OTQyNzIz
@@ -376,6 +429,7 @@
     name: 2.5.2
     color: d0ffad
     default: false
+    description: 'Pointer Cancellation'
 -
     id: 1295942912
     node_id: MDU6TGFiZWwxMjk1OTQyOTEy
@@ -383,6 +437,7 @@
     name: 2.5.3
     color: d0ffad
     default: false
+    description: 'Label in Name'
 -
     id: 1295943059
     node_id: MDU6TGFiZWwxMjk1OTQzMDU5
@@ -390,6 +445,7 @@
     name: 2.5.4
     color: d0ffad
     default: false
+    description: 'Motion Actuation'
 -
     id: 1295943261
     node_id: MDU6TGFiZWwxMjk1OTQzMjYx
@@ -397,6 +453,7 @@
     name: 2.5.5
     color: ea98e1
     default: false
+    description: 'Target Size'
 -
     id: 1295943421
     node_id: MDU6TGFiZWwxMjk1OTQzNDIx
@@ -404,6 +461,7 @@
     name: 2.5.6
     color: ea98e1
     default: false
+    description: 'Concurrent Input Mechanisms'
 -
     id: 1295943598
     node_id: MDU6TGFiZWwxMjk1OTQzNTk4
@@ -411,6 +469,7 @@
     name: 3.1.1
     color: d0ffad
     default: false
+    description: 'Language of Page'
 -
     id: 1295943727
     node_id: MDU6TGFiZWwxMjk1OTQzNzI3
@@ -418,6 +477,7 @@
     name: 3.1.2
     color: 077b9e
     default: false
+    description: 'Language of Parts'
 -
     id: 1295943920
     node_id: MDU6TGFiZWwxMjk1OTQzOTIw
@@ -425,6 +485,7 @@
     name: 3.1.3
     color: ea98e1
     default: false
+    description: 'Unusual Words'
 -
     id: 1295944131
     node_id: MDU6TGFiZWwxMjk1OTQ0MTMx
@@ -432,6 +493,7 @@
     name: 3.1.4
     color: ea98e1
     default: false
+    description: Abbreviations
 -
     id: 1295944276
     node_id: MDU6TGFiZWwxMjk1OTQ0Mjc2
@@ -439,6 +501,7 @@
     name: 3.1.5
     color: ea98e1
     default: false
+    description: 'Reading Level'
 -
     id: 1295944509
     node_id: MDU6TGFiZWwxMjk1OTQ0NTA5
@@ -446,6 +509,7 @@
     name: 3.1.6
     color: ea98e1
     default: false
+    description: Pronunciation
 -
     id: 1295944574
     node_id: MDU6TGFiZWwxMjk1OTQ0NTc0
@@ -453,6 +517,7 @@
     name: 3.2.1
     color: d0ffad
     default: false
+    description: 'On Focus'
 -
     id: 1295944855
     node_id: MDU6TGFiZWwxMjk1OTQ0ODU1
@@ -460,6 +525,7 @@
     name: 3.2.2
     color: d0ffad
     default: false
+    description: 'On Input'
 -
     id: 1295945026
     node_id: MDU6TGFiZWwxMjk1OTQ1MDI2
@@ -467,6 +533,7 @@
     name: 3.2.3
     color: 077b9e
     default: false
+    description: 'Consistent Navigation'
 -
     id: 1295945219
     node_id: MDU6TGFiZWwxMjk1OTQ1MjE5
@@ -474,6 +541,7 @@
     name: 3.2.4
     color: 077b9e
     default: false
+    description: 'Consistent Identification'
 -
     id: 1295945354
     node_id: MDU6TGFiZWwxMjk1OTQ1MzU0
@@ -481,6 +549,7 @@
     name: 3.2.5
     color: ea98e1
     default: false
+    description: 'Change on Request'
 -
     id: 1295945518
     node_id: MDU6TGFiZWwxMjk1OTQ1NTE4
@@ -488,6 +557,7 @@
     name: 3.3.1
     color: d0ffad
     default: false
+    description: 'Error Identification'
 -
     id: 1295945720
     node_id: MDU6TGFiZWwxMjk1OTQ1NzIw
@@ -495,6 +565,7 @@
     name: 3.3.2
     color: d0ffad
     default: false
+    description: 'Labels or Instructions'
 -
     id: 1295945882
     node_id: MDU6TGFiZWwxMjk1OTQ1ODgy
@@ -502,6 +573,7 @@
     name: 3.3.3
     color: 077b9e
     default: false
+    description: 'Error Suggestion'
 -
     id: 1295946132
     node_id: MDU6TGFiZWwxMjk1OTQ2MTMy
@@ -509,6 +581,7 @@
     name: 3.3.4
     color: 077b9e
     default: false
+    description: 'Error Prevention (Legal, Financial, Data)'
 -
     id: 1295946301
     node_id: MDU6TGFiZWwxMjk1OTQ2MzAx
@@ -516,6 +589,7 @@
     name: 3.3.5
     color: ea98e1
     default: false
+    description: Help
 -
     id: 1295946554
     node_id: MDU6TGFiZWwxMjk1OTQ2NTU0
@@ -523,6 +597,7 @@
     name: 3.3.6
     color: ea98e1
     default: false
+    description: 'Error Prevention (All)'
 -
     id: 1295946648
     node_id: MDU6TGFiZWwxMjk1OTQ2NjQ4
@@ -530,6 +605,7 @@
     name: 4.1.1
     color: d0ffad
     default: false
+    description: Parsing
 -
     id: 1295946762
     node_id: MDU6TGFiZWwxMjk1OTQ2NzYy
@@ -537,6 +613,7 @@
     name: 4.1.2
     color: d0ffad
     default: false
+    description: 'Name, Role, Value'
 -
     id: 1295946974
     node_id: MDU6TGFiZWwxMjk1OTQ2OTc0
@@ -544,6 +621,7 @@
     name: 4.1.3
     color: 077b9e
     default: false
+    description: 'Status Messages'
 -
     id: 1294437918
     node_id: MDU6TGFiZWwxMjk0NDM3OTE4
@@ -551,6 +629,7 @@
     name: A
     color: d0ffad
     default: false
+    description: 'Level A'
 -
     id: 1294437741
     node_id: MDU6TGFiZWwxMjk0NDM3NzQx
@@ -558,6 +637,7 @@
     name: AA
     color: 077b9e
     default: false
+    description: 'Level AA'
 -
     id: 1294437500
     node_id: MDU6TGFiZWwxMjk0NDM3NTAw
@@ -565,6 +645,7 @@
     name: AAA
     color: ea98e1
     default: false
+    description: 'Level AAA'
 -
     id: 1303018314
     node_id: MDU6TGFiZWwxMzAzMDE4MzE0
@@ -572,6 +653,7 @@
     name: 'Best Practice'
     color: 68e27c
     default: false
+    description: 'For issues that don''t technically meet WCAG but cause accessibility problems'
 -
     id: 1295571778
     node_id: MDU6TGFiZWwxMjk1NTcxNzc4
@@ -579,6 +661,7 @@
     name: Block
     color: d73a4a
     default: false
+    description: 'Cannot proceed with using the site.'
 -
     id: 1295569427
     node_id: MDU6TGFiZWwxMjk1NTY5NDI3
@@ -586,6 +669,7 @@
     name: High
     color: ef9694
     default: false
+    description: 'Has high impact on using the site.'
 -
     id: 1295573565
     node_id: MDU6TGFiZWwxMjk1NTczNTY1
@@ -593,6 +677,7 @@
     name: Low
     color: 31bf76
     default: false
+    description: 'Has low impact on using the page'
 -
     id: 1295572885
     node_id: MDU6TGFiZWwxMjk1NTcyODg1
@@ -600,6 +685,7 @@
     name: Medium
     color: 2078bc
     default: false
+    description: 'Has moderate impact in using the site.'
 -
     id: 1294429574
     node_id: MDU6TGFiZWwxMjk0NDI5NTc0
@@ -607,3 +693,4 @@
     name: bug
     color: d73a4a
     default: true
+    description: 'Something isn''t working'

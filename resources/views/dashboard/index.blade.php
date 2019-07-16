@@ -5,10 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-sm">
                 @if(Session::has('message'))
-                    <p class="alert alert-info">{{ Session::get('message') }}</p>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <p class="alert alert-info">{{ Session::get('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </p>
+
                 @endif
                 <div>
                     <h2>Repositories</h2>
@@ -20,7 +22,7 @@
                 <div id="newRepository" class="newRepository pt-4 pb-4">
                     <fieldset>
                         <h3>Create New Repository In Github</h3>
-                        <form id="newRepositoryForm">
+                        <form id="newRepositoryForm" action="/repository/create" method="post">
                             <div class="form-group">
                                 <label for="repository-name">Repository Name</label>
                                 <input type="text" name="repository-name" class="form-control" id="repository-name" aria-describedby="repositoryNameHelp" placeholder="Repository Name">
@@ -30,7 +32,7 @@
                                 <input type="text" name="repository-description" class="form-control" id="repository-description" aria-describedby="repositorDescriptionHelp" placeholder="Repository Description">
                             </div>
                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                            <button type="button" class="btn btn-primary" onclick="createNewRepository(); return false;">Save</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                     </fieldset>
                 </div>
@@ -43,7 +45,7 @@
                                         <div class="row"></div>
                                         <a href="/{{ $repo->getName() }}"><h3>{{ $repo->getName() }}</h3></a>
                                         <p><span class="badge badge-primary">Open Issues: {{$repo->getIssueCount()}}</span></p>
-                                        <p>{{ $repo->getDescription() }}</p>
+                                        <p>{{ $repo->getCombinedDescription() }}</p>
                                         <div class="row">
                                             <div class="col-sm">
                                                 <a href="/{{ $repo->getName() }}"><button class="btn btn-primary">View Details</button></a>
@@ -67,28 +69,8 @@
 
     <script>
 
-        function goToRepository() {
-            document.getElementById('repository-select').onchange = function() {
-                window.location.href = this.children[this.selectedIndex].getAttribute('href');
-            };
-        }
-
         function showNewRepositoryForm() {
             return document.getElementById('newRepository').style.display = 'block';
-        }
-
-        function createNewRepository() {
-            var formData = new FormData(document.querySelector('form'));
-            var request = new XMLHttpRequest();
-            request.open('POST', '/repository/create', true);
-
-            request.onreadystatechange = function() {//Call a function when the state changes.
-                if(request.readyState === 4 && request.status === 200) {
-                  location.reload();
-                }
-            };
-
-            request.send(formData);
         }
     </script>
 @endsection

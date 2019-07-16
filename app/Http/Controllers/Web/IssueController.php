@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Web;
 
+use App\Comment\CommentManager;
 use App\Http\Requests\Web\IssueRequest;
 use App\Issue\Issue;
 use App\Issue\IssueManager;
@@ -22,10 +23,22 @@ class IssueController extends Controller
     /** @var MilestoneManager */
     private $milestoneManager;
 
-    public function __construct(IssueManager $issueManager, MilestoneManager $milestoneManager)
+    /** @var CommentManager */
+    private $commentManager;
+
+    /** @var RepositoryManager */
+    private $repositoryManager;
+
+    public function __construct(
+        IssueManager $issueManager,
+        MilestoneManager $milestoneManager,
+        CommentManager $commentManager,
+        RepositoryManager $repositoryManager)
     {
         $this->issueManager= $issueManager;
         $this->milestoneManager = $milestoneManager;
+        $this->commentManager = $commentManager;
+        $this->repositoryManager = $repositoryManager;
     }
 
     public function create(IssueRequest $request)
@@ -39,14 +52,18 @@ class IssueController extends Controller
             ->with('message', 'The issue has been created!');
     }
 
-    public function edit(IssueRequest $request)
+    public function fetch(Request $request)
     {
-        if ($request->getMethod() === 'POST') {
+        $repo = $this->repositoryManager->getRepository($request->repository);
 
-        }
+        $issue = $this->issueManager->getIssueByNumber($request->repository, (int) $request->id);
+
+        $comments = $this->commentManager->getCommentsForIssue($request->repository, $issue->getNumber());
 
         return view('issue.index', [
-           'issue' => $this->issueManager->getIssueByNumber($request->repository, (int) $request->id)
+            'repo' => $repo,
+            'issue' => $issue,
+            'comments' => $comments
         ]);
     }
 
@@ -56,6 +73,11 @@ class IssueController extends Controller
         $issue->setTitle($request->getTitle());
         $issue->setProject($request->getProject());
         $issue->setDescription($request->getDescription());
+        $issue->setCurrentCode($request->getCurrentCode());
+        $issue->setAffectedCommunities($request->getAffectedCommunities());
+        $issue->setSuggestedCode($request->getSuggestedCode());
+        $issue->setEnvironment($request->getIssueEnvironment());
+        $issue->setSolution($request->getSolution());
         $issue->setTags($request->getIssueLabels());
         $issue->setMilestone($this->milestoneManager->findMilestoneForId((int) $request->getMilestone()));
 

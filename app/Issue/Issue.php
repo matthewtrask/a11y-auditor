@@ -18,6 +18,21 @@ class Issue
     /** @var string */
     private $description;
 
+    /** @var string */
+    private $currentCode;
+
+    /** @var string */
+    private $solution;
+
+    /** @var string */
+    private $suggestedCode;
+
+    /** @var string */
+    private $affectedCommunities;
+
+    /** @var string */
+    private $environment;
+
     /** @var array */
     private $tags;
 
@@ -26,6 +41,9 @@ class Issue
 
     /** @var int */
     private $number;
+
+    /** @var string */
+    private $combinedDescription;
 
     public function setId(int $id) : void
     {
@@ -52,7 +70,7 @@ class Issue
         $this->project = $project;
     }
 
-    public function getDescription() : string
+    public function getDescription() : ? string
     {
         return $this->description;
     }
@@ -60,6 +78,16 @@ class Issue
     public function setDescription(string $description)
     {
         $this->description = $description;
+    }
+
+    public function getCurrentCode() : ? string
+    {
+        return $this->currentCode;
+    }
+
+    public function setCurrentCode(? string $currentCode) : void
+    {
+        $this->currentCode = $currentCode;
     }
 
     public function getTags() : array
@@ -90,5 +118,55 @@ class Issue
     public function getNumber() : int
     {
         return $this->number;
+    }
+
+    public function setSolution(?string $solution) : void
+    {
+        $this->solution = $solution;
+    }
+
+    public function getSolution() : ? string
+    {
+        return $this->solution;
+    }
+
+    public function setSuggestedCode(?string $suggestedCode) : void
+    {
+        $this->suggestedCode = $suggestedCode;
+    }
+
+    public function getSuggestedCode() : ? string
+    {
+        return $this->suggestedCode;
+    }
+
+    public function setAffectedCommunities(?string $affectedCommunities) : void
+    {
+        $this->affectedCommunities = $affectedCommunities;
+    }
+
+    public function getAffectedCommunities() : ? string
+    {
+        return $this->affectedCommunities;
+    }
+
+    public function setEnvironment(?string $environment) : void
+    {
+        $this->environment = $environment;
+    }
+
+    public function getEnvironment() : ? string
+    {
+        return $this->environment;
+    }
+
+    public function setCombinedDescription(string $description) : void
+    {
+        $this->combinedDescription = $description;
+    }
+
+    public function getCombinedDescription() : ? string
+    {
+        return $this->combinedDescription;
     }
 }

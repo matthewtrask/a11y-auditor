@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Milestone;
 
+use App\Manager\BaseManager;
 use GuzzleHttp\Client;
 use Illuminate\Support\Collection;
 use Symfony\Component\Yaml\Yaml;
 
-class MilestoneManager
+class MilestoneManager extends BaseManager
 {
     // /repos/:owner/:repo/milestones
     private const MILESTONE_GET = '/repos/%s/%s/milestones';
@@ -21,7 +22,7 @@ class MilestoneManager
 
     public function __construct(Client $client, Yaml $yaml)
     {
-        $this->client = $client;
+        parent::__construct($client);
         $this->yaml = $yaml;
     }
 
@@ -47,7 +48,7 @@ class MilestoneManager
         $milestones = $this->yaml->parseFile(__DIR__ . '/../../data/milestones.yml');
 
         foreach($milestones as $milestone) {
-            $this->client->request('post', $this->buildUri($repo), [
+            $this->getClient()->request('post', $this->buildUri($repo), [
                 'headers' => [
                     'Authorization' => 'token ' . $this->getGithubToken()
                 ],
@@ -75,13 +76,11 @@ class MilestoneManager
 
     public function getMilestonesForRepository(string $repo) : Collection
     {
-        $res = $this->client->request('get', $this->buildUri($repo), [
+        $res = $this->getClient()->request('get', $this->buildUri($repo), [
             'headers' => [
                 'Authorization' => 'token ' . $this->getGithubToken()
             ],
         ]);
-
-
 
         $collection = new Collection();
 
@@ -104,20 +103,5 @@ class MilestoneManager
                     $this->getGithubUsername(),
                     $repo
             );
-    }
-
-    private function getGithubUsername() : string
-    {
-        return (string) config('github.github_username');
-    }
-    
-    private function getGithubUri() : string
-    {
-        return (string) config('github.github_uri');
-    }
-
-    private function getGithubToken() : string
-    {
-        return (string) config('github.github_personal_access_token');
     }
 }

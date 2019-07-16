@@ -9,18 +9,11 @@ use Symfony\Component\Yaml\Yaml;
 class ImportLabelsCommand extends Command
 {
     private const ENDPOINT = 'https://api.github.com/repos/vavroom/a11y-audit/labels?per_page=100';
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+
+    /** @var string */
     protected $signature = 'import:labels';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $description = 'Import labels from a11y-audit repo';
 
     /** @var Client */
@@ -29,11 +22,6 @@ class ImportLabelsCommand extends Command
     /** @var Yaml */
     private $yaml;
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct(Client $client, Yaml $yaml)
     {
         parent::__construct();
@@ -41,14 +29,13 @@ class ImportLabelsCommand extends Command
         $this->yaml = $yaml;
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle() : void
     {
-        $data = $this->client->request('get', self::ENDPOINT);
+        $data = $this->client->request('get', self::ENDPOINT, [
+            'headers' => [
+                'Accept' => 'application/vnd.github.symmetra-preview+json'
+            ]
+        ]);
 
         $yaml = $this->yaml->dump(json_decode($data->getBody()->getContents(), true));
 

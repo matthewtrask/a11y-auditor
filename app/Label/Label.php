@@ -6,11 +6,27 @@ namespace App\Label;
 
 class Label
 {
+    /** @var int */
+    private $id;
+
     /** @var string */
     private $name;
 
     /** @var string */
-    public $color;
+    private $color;
+
+    /** @var string */
+    private $description;
+
+    public function setId(int $id) : void
+    {
+        $this->id = $id;
+    }
+
+    public function getId() : int
+    {
+        return $this->id;
+    }
 
     public function setName(string $name) : void
     {
@@ -30,5 +46,15 @@ class Label
     public function getColor() : string
     {
         return $this->color;
+    }
+
+    public function setDescription(string $description) : void
+    {
+        $this->description = $description;
+    }
+
+    public function getDescription() : string
+    {
+        return $this->description;
     }
 }

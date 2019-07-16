@@ -13,7 +13,12 @@ class CommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    public function getBody()
+    {
+        return $this->get('comment');
     }
 
     /**
@@ -24,7 +29,7 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'comment' => 'required|string'
         ];
     }
 }

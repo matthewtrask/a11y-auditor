@@ -38,9 +38,11 @@
                                 <div class="row"></div>
                                 <h1>{{ $issue->getTitle() }}</h1>
                                 <hr>
-                                <p>{!! $issue->getDescription() !!}</p>
+                                <p>{!! $issue->getCombinedDescription() !!}</p>
+                                <hr>
                                 <div class="row">
                                     <div class="col-sm">
+                                        <h2>Issue Labels</h2>
                                         @foreach(json_decode(json_encode($issue->getTags()), true) as $tag)
                                             <span class="badge badge-primary" style="background-color: #{!! $tag['color'] !!}">
                                                 {{ $tag['name'] }}
@@ -48,16 +50,18 @@
                                         @endforeach
                                     </div>
                                 </div>
+                                <hr>
                                 <div class="row">
                                     <div class="col-sm">
+                                        <h2>Issue Milestone</h2>
                                         @if($issue->getMilestone())
-                                           <p>Milestone:  {{ $issue->getMilestone()['title'] }}</p>
+                                           <p><b>Milestone</b>:  {{ $issue->getMilestone()['title'] }}</p>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="row pt-4">
                                     <div class="col-sm">
-                                        <a href="/{{ $repo->getName() }}/issue/{{ $issue->getNumber() }}"><button class="btn btn-primary">Edit</button></a>
+                                        <a href="/{{ $repo->getName() }}/issues/{{ $issue->getNumber() }}"><button class="btn btn-primary">Edit</button></a>
                                     </div>
                                 </div>
                             </div>

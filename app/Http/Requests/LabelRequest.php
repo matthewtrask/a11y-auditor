@@ -26,6 +26,11 @@ class LabelRequest extends FormRequest
         return $this->get('label-color');
     }
 
+    public function getDescription()
+    {
+        return $this->get('label-description');
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -34,8 +39,9 @@ class LabelRequest extends FormRequest
     public function rules()
     {
         return [
-            'label-name'    => 'required|string',
-            'label-color'   => 'required|string'
+            'label-name'        => 'required|string',
+            'label-color'       => 'required|string',
+            'label-description' => 'required|string'
         ];
     }
 }

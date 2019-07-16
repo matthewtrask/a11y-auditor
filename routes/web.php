@@ -17,6 +17,8 @@ Route::get('/labels', 'Web\LabelController@index');
 Route::post('/labels/add', 'Web\LabelController@create');
 Route::get('/{repository}', 'Web\RepositoryController@index');
 Route::get('/{repository}/issues/create', 'Web\RepositoryController@fetch');
+Route::get('/{repository}/issues/{id}', 'Web\IssueController@fetch');
+Route::post('/{repository}/issues/{issueNumber}/comment', 'Web\CommentController@create');
 Route::get('/{repository}/labels', 'Web\LabelController@index');
 Route::get('/{repository}/labels/create', 'Web\LabelController@index');
 Route::post('/{repository}/issue/create', 'Web\IssueController@create');

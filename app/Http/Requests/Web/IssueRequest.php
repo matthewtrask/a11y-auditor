@@ -36,6 +36,31 @@ class IssueRequest extends FormRequest
         return $this->get('issue-description');
     }
 
+    public function getCurrentCode()
+    {
+        return $this->get('issue-current-code');
+    }
+
+    public function getSolution()
+    {
+        return $this->get('issue-solution');
+    }
+
+    public function getSuggestedCode()
+    {
+        return $this->get('issue-suggested-code');
+    }
+
+    public function getAffectedCommunities()
+    {
+        return $this->get('issue-affected-communities');
+    }
+
+    public function getIssueEnvironment()
+    {
+        return $this->get('issue-environment');
+    }
+
     public function getMilestone()
     {
         return (int) $this->get('issue-milestone');
@@ -44,11 +69,16 @@ class IssueRequest extends FormRequest
     public function rules()
     {
         return [
-            'issue-title'       => 'nullable|string',
-            'issue-project'     => 'nullable|string',
-            'issue-description' => 'nullable|string',
-            'issue-labels'      => 'nullable|array',
-            'issue-milestone'   => 'nullable|integer',
+            'issue-title'                   => 'nullable|string',
+            'issue-project'                 => 'nullable|string',
+            'issue-description'             => 'nullable|string',
+            'issue-current-code'            => 'nullable|string',
+            'issue-solution'                => 'nullable|string',
+            'issue-suggested-code'          => 'nullable|string',
+            'issue-affected-communities'    => 'nullable|string',
+            'issue-environment'             => 'nullable|string',
+            'issue-labels'                  => 'nullable|array',
+            'issue-milestone'               => 'nullable|integer',
         ];
     }
 }

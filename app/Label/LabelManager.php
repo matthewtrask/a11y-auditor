@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Label;
 
+use App\Manager\BaseManager;
 use GuzzleHttp\Client;
 use Illuminate\Support\Collection;
 use Symfony\Component\Yaml\Yaml;
 
-class LabelManager
+class LabelManager extends BaseManager
 {
     /** /repos/:owner/:repo/labels */
     public const LABELS_ENDPOINT = '/repos/%s/%s/labels';
@@ -37,7 +38,7 @@ class LabelManager
 
     public function __construct(Client $client, Yaml $yaml)
     {
-        $this->client = $client;
+        parent::__construct($client);
         $this->yaml = $yaml;
     }
 
@@ -51,6 +52,7 @@ class LabelManager
             $label = new Label();
             $label->setName($issueLabel['name']);
             $label->setColor($issueLabel['color']);
+            $label->setDescription($issueLabel['description']);
 
             $collection->add($label);
         }
@@ -64,37 +66,25 @@ class LabelManager
 
         foreach ($labels as $label) {
             if (!in_array($label['name'], $this->defaultGithubLabels)) {
-                $this->client->request(self::POST, $this->buildGetLabelsUri($repositoryName), [
+                $this->getClient()->request(self::POST, $this->buildGetLabelsUri($repositoryName), [
                     'headers' => [
-                        'Authorization' => 'token ' . $this->getGithubToken()
+                        'Authorization' => 'token ' . $this->getGithubToken(),
+                        'Accept' => $this->getGithubAcceptHeader()
                     ],
                     'body' => json_encode([
                         'name' => $label['name'],
                         'color' => $label['color'],
-                        'default' => $label['default'],
+                        'description' => $label['description']
                     ])
                 ]);
             }
         }
     }
 
+
+
     private function buildGetLabelsUri(string $repoName) : string
     {
         return $this->getGithubUri() . sprintf(self::LABELS_ENDPOINT, $this->getGithubUserName(), $repoName);
-    }
-
-    private function getGithubUri() : string
-    {
-        return (string) config('github.github_uri');
-    }
-
-    private function getGithubToken() : string
-    {
-        return (string) config('github.github_personal_access_token');
-    }
-
-    private function getGithubUsername() : string
-    {
-        return (string) config('github.github_username');
     }
 }

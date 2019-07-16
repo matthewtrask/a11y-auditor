@@ -10,18 +10,10 @@ class ImportMilestonesCommand extends Command
 {
     private const ENDPOINT = 'https://api.github.com/repos/vavroom/a11y-audit/milestones';
 
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $signature = 'import:milestones';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $description = 'Import milestones from a11y-audit repo';
 
     /** @var Client */
@@ -30,11 +22,6 @@ class ImportMilestonesCommand extends Command
     /** @var Yaml */
     private $yaml;
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct(Client $client, Yaml $yaml)
     {
         parent::__construct();
@@ -42,11 +29,6 @@ class ImportMilestonesCommand extends Command
         $this->yaml = $yaml;
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle() : void
     {
         $data = $this->client->request('get', self::ENDPOINT);
