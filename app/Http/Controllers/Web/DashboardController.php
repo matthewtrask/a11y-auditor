@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Communities\AffectedCommunity;
 use App\Label\LabelManager;
 use App\Milestone\MilestoneManager;
 use App\Repository\RepositoryManager;
@@ -41,7 +42,8 @@ class DashboardController extends Controller
         return view('audit.index', [
             'repo' => $this->repositoryManager->getRepository($request->repository),
             'labels' => $this->labelManager->getRepositoryIssueLabels(),
-            'milestones' => $this->milestoneManager->getMilestones()
+            'milestones' => $this->milestoneManager->getMilestones(),
+            'affectedCommunities' => AffectedCommunity::getAffectedCommunities()
         ]);
     }
 }

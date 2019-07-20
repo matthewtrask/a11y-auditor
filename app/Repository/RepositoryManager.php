@@ -27,9 +27,6 @@ class RepositoryManager extends BaseManager
     // /repos/:owner/:repo
     public const DELETE_ENDPONT = '/repos/%s/%s';
 
-    /** @var Client */
-    private $client;
-
     /** @var LabelManager */
     private $labelManager;
 

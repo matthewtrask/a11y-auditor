@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Communities\AffectedCommunity;
 use App\Http\Requests\Web\RepositoryRequest;
 use App\Issue\IssueManager;
 use App\Label\Label;
@@ -51,7 +52,8 @@ class RepositoryController extends Controller
         return view('audit.index', [
             'repo' => $this->repositoryManager->getRepository($request->repository),
             'labels' => $this->labelManager->getRepositoryIssueLabels(),
-            'milestones' => $this->milestoneManager->getMilestones()
+            'milestones' => $this->milestoneManager->getMilestones(),
+            'affectedCommunities' => AffectedCommunity::getAffectedCommunities(),
         ]);
     }
 

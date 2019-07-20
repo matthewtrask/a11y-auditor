@@ -19,9 +19,6 @@ class IssueManager extends BaseManager
     /* /repos/:owner/:repo/issues/:issue_number */
     public const ISSUE_ENDPONT = '/repos/%s/%s/issues/%s';
 
-    /** @var Client */
-    private $client;
-
     /** @var MilestoneManager */
     private $milestoneManager;
 
@@ -111,20 +108,31 @@ class IssueManager extends BaseManager
 
     private function buildDescription(Issue $issue) : void
     {
-        $description = sprintf(
-'%s 
-%s 
-%s 
-%s 
-%s 
-%s',
-                $issue->getDescription() . PHP_EOL,
-                $issue->getCurrentCode() . PHP_EOL,
-                $issue->getSolution() . PHP_EOL,
-                $issue->getSuggestedCode() . PHP_EOL,
-                $issue->getAffectedCommunities() . PHP_EOL,
-                $issue->getEnvironment()
-            );
+        $description = '';
+
+        if ($issue->getDescription()) {
+            $description .= $this->addDescription($issue->getDescription()) . PHP_EOL;
+        }
+
+        if ($issue->getCurrentCode()) {
+            $description .= $this->addCurrentCode($issue->getCurrentCode()) . PHP_EOL;
+        }
+
+        if ($issue->getSolution()) {
+            $description .= $this->addSolution($issue->getSolution()) . PHP_EOL;
+        }
+
+        if ($issue->getSuggestedCode()) {
+            $description .= $this->addSuggestedCode($issue->getSuggestedCode()) . PHP_EOL;
+        }
+
+        if ($issue->getAffectedCommunities()) {
+            $description .= $this->addAffectedCommunities($issue->getAffectedCommunities()) . PHP_EOL;
+        }
+
+        if ($issue->getEnvironment()) {
+            $description .= $this->addEnvironment($issue->getEnvironment()) . PHP_EOL;
+        }
 
         $issue->setCombinedDescription($description);
     }
@@ -136,8 +144,46 @@ class IssueManager extends BaseManager
         return $converter->convertToHtml($markdown);
     }
 
+    private function addDescription(string $description) : string
+    {
+        return $this->buildDescriptionString($description, Issue::CURRENT_CODE);
+    }
+
+    private function addCurrentCode(string $currentCode) : string
+    {
+        return$this->buildDescriptionString($currentCode, Issue::CURRENT_CODE);
+    }
+
+    private function addSolution(string $solution) : string
+    {
+        return $this->buildDescriptionString($solution, Issue::SOLUTION);
+    }
+
+    private function addSuggestedCode(string $suggestedCode) : string
+    {
+        return $this->buildDescriptionString($suggestedCode, Issue::SUGGESTED_CODE);
+    }
+
+    private function addAffectedCommunities(string $affectedCommunities) : string
+    {
+        return $this->buildDescriptionString($affectedCommunities, Issue::AFFECTED_COMMUNITIES);
+    }
+
+    private function addEnvironment(string $environment) : string
+    {
+        return $this->buildDescriptionString($environment, Issue::ENVIRONMENT);
+    }
+
     private function createMarkdownConverter(): CommonMarkConverter
     {
         return new CommonMarkConverter(['html_input' => 'escape']);
+    }
+
+    private function buildDescriptionString(string $text, string $header) : string
+    {
+        return sprintf(
+'%s 
+%s',
+            $header, $text);
     }
 }

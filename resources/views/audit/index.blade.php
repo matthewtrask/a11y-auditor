@@ -13,11 +13,6 @@
                             <label for="issue-title">Issue Title</label>
                             <input type="text" class="form-control" id="issue-title"  name="issue-title" placeholder="Issue Title">
                         </div>
-                        <div class="col">
-                            {{-- will be select field --}}
-                            <label for="issue-project">Issue Project</label>
-                            <input type="text" class="form-control" id="issue-project"  name="issue-project" placeholder="Associated Project">
-                        </div>
                     </div>
                     <div class="form-row pt-4">
                         <div class="col">
@@ -31,51 +26,46 @@
                     </div>
                     <div class="form-row pt-4">
                         <label for="issue-description">Description</label>
-                        <textarea name="issue-description" class="form-control" id="issue-description" cols="30" rows="10">
-## Description
-
-                        </textarea>
+                        <textarea name="issue-description" class="form-control" id="issue-description" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-row pt-4">
                         <label for="issue-current-code">Current Code</label>
-                        <textarea name="issue-current-code" class="form-control" id="issue-current-code" cols="30" rows="10">
-## Current Code
-
-                        </textarea>
+                        <textarea name="issue-current-code" class="form-control" id="issue-current-code" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-row pt-4">
                         <label for="issue-solution">Issue Solution</label>
-                        <textarea name="issue-solution" class="form-control" id="issue-solution" cols="30" rows="10">
-## Solution
-
-                        </textarea>
+                        <textarea name="issue-solution" class="form-control" id="issue-solution" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-row pt-4">
                         <label for="issue-suggested-code">Suggested Code</label>
-                        <textarea name="issue-suggested-code" class="form-control" id="issue-suggested-code" cols="30" rows="10">
-### Suggested Code
-
-                        </textarea>
+                        <textarea name="issue-suggested-code" class="form-control" id="issue-suggested-code" cols="30" rows="10"></textarea>
                     </div>
-                    <div class="form-row pt-4">
+                    <div class="form-group pt-4">
                         <label for="issue-affected-communities">Affected Communities</label>
-                        <textarea name="issue-affected-communities" class="form-control" id="issue-affected-communities" cols="30" rows="10">
-## Affected Communities
-* Vision
-* Motor
-* Hearing
-* Cognitive
+                        @foreach($affectedCommunities as $community => $value)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{ $community }}" id="issue-affected-communities" name="issue-affected-communities[]">
+                                <label class="form-check-label" for="defaultCheck1">{{ $value }}</label>
+                            </div>
+                        @endforeach
 
-                        </textarea>
+
+                        {{--<label for="issue-affected-communities">Affected Communities</label>--}}
+                        {{--<textarea name="issue-affected-communities" class="form-control" id="issue-affected-communities" cols="30" rows="10">--}}
+{{--## Affected Communities--}}
+{{--* Vision--}}
+{{--* Motor--}}
+{{--* Hearing--}}
+{{--* Cognitive--}}
+
+                        {{--</textarea>--}}
                     </div>
                     <div class="form-row pt-4">
                         <label for="issue-environment">Environment</label>
                         <textarea name="issue-environment" class="form-control" id="issue-environment" cols="30" rows="10">
-## Environment
 - OS: [e.g. iOS]
 - Browser [e.g. chrome, safari]
 - Version [e.g. 22]
-
                         </textarea>
                     </div>
                     <div class="form-row pt-4">

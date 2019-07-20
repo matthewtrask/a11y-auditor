@@ -18,9 +18,6 @@ class LabelManager extends BaseManager
 
     public const POST = 'post';
 
-    /** @var Client */
-    private $client;
-
     /** @var Yaml */
     private $yaml;
 

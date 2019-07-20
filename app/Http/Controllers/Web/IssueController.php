@@ -9,11 +9,9 @@ use App\Http\Requests\Web\IssueRequest;
 use App\Issue\Issue;
 use App\Issue\IssueManager;
 use App\Http\Controllers\Controller;
-use App\Label\LabelManager;
 use App\Milestone\MilestoneManager;
 use App\Repository\RepositoryManager;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class IssueController extends Controller
 {
@@ -63,7 +61,7 @@ class IssueController extends Controller
         return view('issue.index', [
             'repo' => $repo,
             'issue' => $issue,
-            'comments' => $comments
+            'comments' => $comments,
         ]);
     }
 
@@ -71,10 +69,9 @@ class IssueController extends Controller
     {
         $issue = new Issue();
         $issue->setTitle($request->getTitle());
-        $issue->setProject($request->getProject());
         $issue->setDescription($request->getDescription());
         $issue->setCurrentCode($request->getCurrentCode());
-        $issue->setAffectedCommunities($request->getAffectedCommunities());
+        $issue->setAffectedCommunities(implode(" ", $request->getAffectedCommunities()));
         $issue->setSuggestedCode($request->getSuggestedCode());
         $issue->setEnvironment($request->getIssueEnvironment());
         $issue->setSolution($request->getSolution());

@@ -5,7 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-sm">
                 @if(Session::has('message'))
-                    <p class="alert alert-info">{{ Session::get('message') }}</p>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ Session::get('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 @endif
                 <h1>{{ $repo->getName() }}</h1>
                 <a href="{{ $repo->getGithubLink() }}">Vew on Github</a>

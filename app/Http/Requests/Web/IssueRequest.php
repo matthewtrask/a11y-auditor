@@ -21,11 +21,6 @@ class IssueRequest extends FormRequest
         return $this->get('issue-title');
     }
 
-    public function getProject()
-    {
-        return $this->get('issue-project');
-    }
-
     public function getIssueLabels()
     {
         return $this->get('issue-labels');
@@ -70,12 +65,11 @@ class IssueRequest extends FormRequest
     {
         return [
             'issue-title'                   => 'nullable|string',
-            'issue-project'                 => 'nullable|string',
             'issue-description'             => 'nullable|string',
             'issue-current-code'            => 'nullable|string',
             'issue-solution'                => 'nullable|string',
             'issue-suggested-code'          => 'nullable|string',
-            'issue-affected-communities'    => 'nullable|string',
+            'issue-affected-communities'    => 'nullable|array',
             'issue-environment'             => 'nullable|string',
             'issue-labels'                  => 'nullable|array',
             'issue-milestone'               => 'nullable|integer',

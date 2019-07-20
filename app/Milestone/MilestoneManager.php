@@ -14,9 +14,6 @@ class MilestoneManager extends BaseManager
     // /repos/:owner/:repo/milestones
     private const MILESTONE_GET = '/repos/%s/%s/milestones';
 
-    /** @var Client */
-    private $client;
-
     /** @var Yaml */
     private $yaml;
 

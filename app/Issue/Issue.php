@@ -6,14 +6,18 @@ namespace App\Issue;
 
 class Issue
 {
+    public const DESCRIPTION = '## Description';
+    public const CURRENT_CODE = '## Current Code';
+    public const SOLUTION = '## Solution';
+    public const SUGGESTED_CODE = '## Suggested Code';
+    public const AFFECTED_COMMUNITIES = '## Affected Communities';
+    public const ENVIRONMENT = '## Environment';
+
     /** @var int */
     private $id;
 
     /** @var string */
     private $title;
-
-    /** @var string */
-    private $project;
 
     /** @var string */
     private $description;
@@ -63,11 +67,6 @@ class Issue
     public function getTitle() : string
     {
         return $this->title;
-    }
-
-    public function setProject(string $project) : void
-    {
-        $this->project = $project;
     }
 
     public function getDescription() : ? string

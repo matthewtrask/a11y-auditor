@@ -17,9 +17,6 @@ class CommentManager extends BaseManager
     // /repos/:owner/:repo/issues/:issue_number/comments
     private const COMMENT_URL = '/repos/%s/%s/issues/%s/comments';
 
-    /** @var Client */
-    private $client;
-
     public function __construct(Client $client)
     {
         parent::__construct($client);
