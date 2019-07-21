@@ -99,6 +99,11 @@ class Issue
         $this->tags = $tags;
     }
 
+    public function addTag(string $tag) : void
+    {
+        $this->tags[] = $tag;
+    }
+
     public function getMilestone() : ? array
     {
         return $this->milestone;
