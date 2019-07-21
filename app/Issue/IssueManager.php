@@ -14,10 +14,10 @@ use Symfony\Component\Yaml\Yaml;
 class IssueManager extends BaseManager
 {
     /* /repos/:owner/:repo/issues */
-    public const ISSUES_ENDPONT = '/repos/%s/%s/issues';
+    public const ISSUES_ENDPOINT = '/repos/%s/%s/issues';
 
     /* /repos/:owner/:repo/issues/:issue_number */
-    public const ISSUE_ENDPONT = '/repos/%s/%s/issues/%s';
+    public const ISSUE_ENDPOINT = '/repos/%s/%s/issues/%s';
 
     /** @var MilestoneManager */
     private $milestoneManager;
@@ -103,14 +103,32 @@ class IssueManager extends BaseManager
         return $issue;
     }
 
+    public function closeIssue(string $repo, int $id) : bool
+    {
+        $res = $this->getClient()->request('patch', $this->buildIssueUrl($repo, $id), [
+            'headers' => [
+                'Authorization' => 'token ' . $this->getGithubToken(),
+            ],
+            'body' => json_encode([
+                'state' => 'closed'
+            ])
+        ]);
+
+        if ($res->getStatusCode() === 200) {
+            return true;
+        }
+
+        return false;
+    }
+
     private function buildIssuesUrl(string $repository): string
     {
-        return $this->getGithubUri() . sprintf(self::ISSUES_ENDPONT, $this->getGithubUsername(), $repository);
+        return $this->getGithubUri() . sprintf(self::ISSUES_ENDPOINT, $this->getGithubUsername(), $repository);
     }
 
     private function buildIssueUrl(string $repository, int $id): string
     {
-        return $this->getGithubUri() . sprintf(self::ISSUE_ENDPONT, $this->getGithubUsername(), $repository, $id);
+        return $this->getGithubUri() . sprintf(self::ISSUE_ENDPOINT, $this->getGithubUsername(), $repository, $id);
     }
 
     private function createMarkdownConverter(): CommonMarkConverter

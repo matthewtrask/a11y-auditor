@@ -65,6 +65,21 @@ class IssueController extends Controller
         ]);
     }
 
+    public function close(Request $request)
+    {
+        $closed = $this->issueManager->closeIssue($request->repository, (int) $request->id);
+
+        if ($closed) {
+            return redirect()
+                ->action('Web\RepositoryController@index', ['repository' => $request->repository])
+                ->with('message', 'The issue has been closed!');
+        }
+
+        return redirect()
+            ->action('Web\RepositoryController@index', ['repository' => $request->repository])
+            ->with('message', 'The was an issue closing the issue. Please try again later.');
+    }
+
     private function createIssue(IssueRequest $request) : Issue
     {
         $issue = new Issue();

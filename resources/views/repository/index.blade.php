@@ -66,7 +66,9 @@
                                 </div>
                                 <div class="row pt-4">
                                     <div class="col-sm">
-                                        <a href="/{{ $repo->getName() }}/issues/{{ $issue->getNumber() }}"><button class="btn btn-primary">Edit</button></a>
+                                        <form action="/{{ $repo->getName() }}/issues/{{ $issue->getNumber() }}/close" method="post">
+                                            <button type="submit" class="btn btn-danger">Close</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
