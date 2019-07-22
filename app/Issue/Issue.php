@@ -49,6 +49,9 @@ class Issue
     /** @var string */
     private $combinedDescription;
 
+    /** @var string */
+    private $htmlUrl;
+
     public function setId(int $id) : void
     {
         $this->id = $id;
@@ -172,5 +175,15 @@ class Issue
     public function getCombinedDescription() : ? string
     {
         return $this->combinedDescription;
+    }
+
+    public function setHtmlUrl(string $url) : void
+    {
+        $this->htmlUrl = $url;
+    }
+
+    public function getHtmlUrl() : string
+    {
+        return $this->htmlUrl;
     }
 }

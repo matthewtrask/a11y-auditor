@@ -75,6 +75,7 @@ class IssueManager extends BaseManager
             $issue->setCombinedDescription($this->convertMarkdown($data['body']));
             $issue->setTags($data['labels']);
             $issue->setNumber($data['number']);
+            $issue->setHtmlUrl($data['html_url']);
 
             $collection->add($issue);
         }
@@ -87,6 +88,7 @@ class IssueManager extends BaseManager
         $res = $this->getClient()->request('get', $this->buildIssueUrl($repo, $id), [
             'headers' => [
                 'Authorization' => 'token ' . $this->getGithubToken(),
+                'Accept' => 'application/vnd.github.symmetra-preview+json',
             ]
         ]);
 
@@ -99,6 +101,7 @@ class IssueManager extends BaseManager
         $issue->setCombinedDescription($this->convertMarkdown($data['body']));
         $issue->setTags($data['labels']);
         $issue->setNumber($data['number']);
+        $issue->setHtmlUrl($data['html_url']);
 
         return $issue;
     }

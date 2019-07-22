@@ -16,7 +16,8 @@
         </div>
         <div class="row justify-content-center">
             <div class="col">
-                <h2>Issues</h2>
+                <h2>{{ $issue->getTitle() }}</h2>
+                <p><a target="_blank" href="{{ $issue->getHtmlUrl() }}">View on Github</a></p>
             </div>
         </div>
         <div class="row">
@@ -24,16 +25,22 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row"></div>
-                        <h3>{{ $issue->getTitle() }}</h3>
                         <p>{!! $issue->getCombinedDescription() !!}</p>
                         <div class="row">
                             <div class="col-sm">
-                                @foreach(json_decode(json_encode($issue->getTags()), true) as $tag)
-                                    <span class="badge badge-secondary" style="background-color: #{{ $tag['color'] }}">
-                                                {{ $tag['name'] }} {{ $tag['description'] }}
-                                            </span>
-                                @endforeach
+                                <h2>Issue Labels</h2>
                             </div>
+                        </div>
+                        <div class="row">
+                            @foreach(json_decode(json_encode($issue->getTags()), true) as $tag)
+                                <div class="col-1">
+                                    <h4>
+                                        <span class="badge badge-secondary" style="background-color: #{{ $tag['color'] }}">
+                                            {{ $tag['name'] }}
+                                        </span>
+                                    </h4>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="row">
                             <div class="col-sm">
@@ -55,9 +62,9 @@
         <div class="row justify-content-center">
             <div class="col">
                 <h2>Comments</h2>
-                <button class="btn btn-primary">Add Comment</button>
+                <button class="btn btn-primary showCommentForm" id="showCommentForm">Add Comment</button>
 
-                <form action="/{{ $repo->getName() }}/issues/{{ $issue->getNumber() }}/comment" method="post" class="pt-2 pb-2">
+                <form action="/{{ $repo->getName() }}/issues/{{ $issue->getNumber() }}/comment" method="post" class="pt-2 pb-2 commentForm" id="commentForm">
                     <div class="form-group">
                         <label for="comment">Comment</label>
                         <input type="text" name="comment" class="form-control" id="comment" aria-describedby="comment" placeholder="Comment">

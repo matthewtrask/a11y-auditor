@@ -13,7 +13,7 @@
                     </div>
                 @endif
                 <h1>{{ $repo->getName() }}</h1>
-                <a href="{{ $repo->getGithubLink() }}">Vew on Github</a>
+                <a target="_blank" href="{{ $repo->getGithubLink() }}">Vew on Github</a>
             </div>
         </div>
         <div class="pt-2 row justify-content-center">
@@ -48,10 +48,18 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <h2>Issue Labels</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
                                         @foreach(json_decode(json_encode($issue->getTags()), true) as $tag)
-                                            <span class="badge badge-primary" style="background-color: #{!! $tag['color'] !!}">
-                                                {{ $tag['name'] }}
-                                            </span>
+                                            <div class="col-1">
+                                                <h4>
+                                                    <span class="badge badge-secondary" style="background-color: #{{ $tag['color'] }}">
+                                                        {{ $tag['name'] }}
+                                                    </span>
+                                                </h4>
+                                            </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -65,10 +73,13 @@
                                     </div>
                                 </div>
                                 <div class="row pt-4">
-                                    <div class="col-sm">
+                                    <div class="col-sm-2">
                                         <form action="/{{ $repo->getName() }}/issues/{{ $issue->getNumber() }}/close" method="post">
                                             <button type="submit" class="btn btn-danger">Close</button>
                                         </form>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <a href="/{{ $repo->getName() }}/issues/{{ $issue->getNumber() }}"><button class="btn btn-primary">View Issue</button></a>
                                     </div>
                                 </div>
                             </div>
