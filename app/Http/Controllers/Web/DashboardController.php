@@ -36,14 +36,4 @@ class DashboardController extends Controller
             'repos' => $this->repositoryManager->getRepositories()
         ]);
     }
-
-    public function fetch(Request $request)
-    {
-        return view('audit.index', [
-            'repo' => $this->repositoryManager->getRepository($request->repository),
-            'labels' => $this->labelManager->getRepositoryIssueLabels(),
-            'milestones' => $this->milestoneManager->getMilestones(),
-            'affectedCommunities' => AffectedCommunity::getAffectedCommunities()
-        ]);
-    }
 }
