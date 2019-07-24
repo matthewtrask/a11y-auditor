@@ -22,11 +22,11 @@
                     <button class="btn btn-primary">Create Issue</button>
                 </a>
             </div>
-            <div class="col-sm-2">
-                <a href="/{{ $repo->getName() }}/edit">
-                    <button class="btn btn-primary">Edit Repo</button>
-                </a>
-            </div>
+            {{--<div class="col-sm-2">--}}
+                {{--<a href="/{{ $repo->getName() }}/edit">--}}
+                    {{--<button class="btn btn-primary">Edit Repo</button>--}}
+                {{--</a>--}}
+            {{--</div>--}}
             <div class="col-sm-8"></div>
         </div>
         <div class="pt-2 row justify-content-center">
